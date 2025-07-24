@@ -1,0 +1,19 @@
+image: node:20
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install -g @angular/cli
+  - npm install
+
+pages:
+  script:
+    - ng build --configuration=production
+    - mv dist/gh-pages-angular public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
